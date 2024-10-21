@@ -1,0 +1,27 @@
+<h1>My Store</h1>
+<div class="product-grid">
+  <div *ngFor="let product of productsList" class="product-item">
+    <div>
+      <span>{{ product.title }}</span>
+      <img
+        [ngSrc]="product.thumbnail"
+        height="200"
+        width="200"
+        title="{{ product.title + '_thumbnail' }}"
+        [alt]="product.title + '_thumbnail'"
+        priority
+      />
+      <span>₹{{ product.price }}</span>
+    </div>
+  </div>
+  <div class="pagination">
+    @if(offset>0){
+    <button (click)="previousPage()">previous</button>
+    } @if(offset<48){
+    <button (click)="nextPage()">next</button>
+    }
+  </div>
+</div>
+@if(isLoading){
+<app-loader></app-loader>
+}
